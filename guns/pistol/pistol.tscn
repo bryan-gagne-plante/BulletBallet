@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://juebimp2kbf1"]
+[gd_scene load_steps=4 format=3 uid="uid://juebimp2kbf1"]
 
 [ext_resource type="Texture2D" uid="uid://7125nlmv7tw6" path="res://guns/pistol/pistol.png" id="1_7n7u2"]
+[ext_resource type="Script" path="res://guns/pistol/pistol.gd" id="1_20pvj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dibvy"]
 radius = 631.826
 
 [node name="Pistol" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_20pvj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dibvy")

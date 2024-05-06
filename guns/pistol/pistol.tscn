@@ -21,4 +21,10 @@ position = Vector2(253, -8)
 texture = ExtResource("1_7n7u2")
 
 [node name="Barrel" type="Marker2D" parent="WeaponPivot/Pistol"]
+unique_name_in_owner = true
 position = Vector2(62, -19)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

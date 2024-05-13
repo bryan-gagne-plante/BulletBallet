@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://guns/pistol/pistol.gd" id="1_20pvj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dibvy"]
-radius = 631.826
+radius = 275.22
 
 [node name="Pistol" type="Area2D"]
 collision_layer = 0
@@ -17,7 +17,8 @@ shape = SubResource("CircleShape2D_dibvy")
 [node name="WeaponPivot" type="Marker2D" parent="."]
 
 [node name="Pistol" type="Sprite2D" parent="WeaponPivot"]
-position = Vector2(253, -8)
+position = Vector2(66, -4.76837e-07)
+scale = Vector2(0.373457, 0.373457)
 texture = ExtResource("1_7n7u2")
 
 [node name="Barrel" type="Marker2D" parent="WeaponPivot/Pistol"]

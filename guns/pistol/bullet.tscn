@@ -1,23 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://chmtqjtv6ypm4"]
 
-[ext_resource type="Script" path="res://Bullet.gd" id="1_foelf"]
+[ext_resource type="Script" path="res://guns/pistol/Bullet.gd" id="1_jbcd4"]
 [ext_resource type="Texture2D" uid="uid://dn1i06yef7xov" path="res://guns/pistol/bullet.png" id="2_44f1o"]
 [ext_resource type="AudioStream" uid="uid://bviufxc7kkcbi" path="res://guns/pistol/pistol_shot.mp3" id="3_2wxhb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_upfcj"]
-radius = 9.0
+radius = 4.0
 
 [node name="Bullet" type="Area2D"]
 top_level = true
 collision_layer = 0
 collision_mask = 3
-script = ExtResource("1_foelf")
+script = ExtResource("1_jbcd4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_upfcj")
 
 [node name="Bullet" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
+scale = Vector2(0.373, 0.373)
 texture = ExtResource("2_44f1o")
 
 [node name="Gunshot" type="AudioStreamPlayer" parent="."]

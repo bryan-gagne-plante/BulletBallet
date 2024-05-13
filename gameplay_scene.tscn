@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d274hivgs4bsi"]
+
+[ext_resource type="PackedScene" uid="uid://bs0kpd6oeajj7" path="res://player.tscn" id="1_www40"]
+[ext_resource type="PackedScene" uid="uid://juebimp2kbf1" path="res://guns/pistol/pistol.tscn" id="2_5gqon"]
+
+[node name="Game" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -93.0
+offset_top = -92.0
+offset_right = 2037.0
+offset_bottom = 1305.0
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_www40")]
+position = Vector2(561, 306)
+
+[node name="Pistol" parent="CharacterBody2D" instance=ExtResource("2_5gqon")]

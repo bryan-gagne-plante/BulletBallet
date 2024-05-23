@@ -28,10 +28,12 @@ position = Vector2(561, 306)
 
 [node name="Pistol" parent="CharacterBody2D" instance=ExtResource("2_5gqon")]
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="CharacterBody2D"]
+position = Vector2(-513.147, -289.498)
+scale = Vector2(0.550758, 0.550758)
 curve = SubResource("Curve2D_rvdwt")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="CharacterBody2D/Path2D"]
 unique_name_in_owner = true
 position = Vector2(-355, -263)
 rotation = -0.00114199

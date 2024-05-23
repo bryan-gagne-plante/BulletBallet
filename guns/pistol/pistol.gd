@@ -1,10 +1,10 @@
 extends Area2D
 
 const BULLET = preload("res://guns/pistol/bullet.tscn")
-const SHOT_DELAY = 0.5
+@export var shot_delay = 0.5
 const SCALE = 0.373
 
-var time_since_shot = SHOT_DELAY
+var time_since_shot = shot_delay
 
 func _process(delta):
 	# Manual aiming and shooting
@@ -12,7 +12,7 @@ func _process(delta):
 	rotate_weapon()
 	
 	time_since_shot += delta
-	if Input.is_action_pressed("shoot") && time_since_shot > SHOT_DELAY:
+	if Input.is_action_pressed("shoot") && time_since_shot > shot_delay:
 		shoot()
 		time_since_shot = 0
 

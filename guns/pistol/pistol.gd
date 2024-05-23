@@ -2,12 +2,15 @@ extends Area2D
 
 const BULLET = preload("res://guns/pistol/bullet.tscn")
 const SHOT_DELAY = 0.5
+const SCALE = 0.373
 
 var time_since_shot = SHOT_DELAY
 
 func _process(delta):
-	# Manual aiming
+	# Manual aiming and shooting
 	look_at(get_global_mouse_position())
+	rotate_weapon()
+	
 	time_since_shot += delta
 	if Input.is_action_pressed("shoot") && time_since_shot > SHOT_DELAY:
 		shoot()
@@ -15,12 +18,14 @@ func _process(delta):
 
 # func _physics_process(delta):
 	# Automatic aiming
-	#var enemies_in_range = get_overlapping_bodies()
-	#if enemies_in_range.size() > 0:
-	#	var target_enemy = enemies_in_range.front()
-	#	look_at(target_enemy.global_position)
+#	var enemies_in_range = get_overlapping_bodies()
+#	if enemies_in_range.size() > 0:
+#		var target_enemy = enemies_in_range.front()
+#		look_at(target_enemy.global_position)
+#		rotate_weapon()
 
 func shoot():
+	%Gunshot.play()
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = %Barrel.global_position
 	new_bullet.global_rotation = %Barrel.global_rotation
@@ -29,3 +34,10 @@ func shoot():
 # Automatic shooting
 #func _on_timer_timeout():
 #	shoot()
+
+func rotate_weapon() :
+	var rotation_modulo = int(abs(get_rotation_degrees())) % 360
+	if (rotation_modulo <= 270 && rotation_modulo >= 90):
+		%Pistol.scale = Vector2(SCALE, -SCALE)
+	else:
+		%Pistol.scale = Vector2(SCALE, SCALE)

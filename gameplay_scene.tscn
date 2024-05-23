@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d274hivgs4bsi"]
 
-[ext_resource type="PackedScene" uid="uid://bs0kpd6oeajj7" path="res://player.tscn" id="1_www40"]
+[ext_resource type="PackedScene" uid="uid://4x6g8x42gxwp" path="res://player.tscn" id="1_www40"]
 [ext_resource type="PackedScene" uid="uid://juebimp2kbf1" path="res://guns/pistol/pistol.tscn" id="2_5gqon"]
 
 [node name="Game" type="Node2D"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://juebimp2kbf1"]
+[gd_scene load_steps=5 format=3 uid="uid://juebimp2kbf1"]
 
 [ext_resource type="Texture2D" uid="uid://7125nlmv7tw6" path="res://guns/pistol/pistol.png" id="1_7n7u2"]
 [ext_resource type="Script" path="res://guns/pistol/pistol.gd" id="1_20pvj"]
+[ext_resource type="AudioStream" uid="uid://bviufxc7kkcbi" path="res://guns/pistol/pistol_shot.mp3" id="3_u4k1i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dibvy"]
-radius = 275.22
+radius = 351.07
 
 [node name="Pistol" type="Area2D"]
 collision_layer = 0
@@ -17,8 +18,9 @@ shape = SubResource("CircleShape2D_dibvy")
 [node name="WeaponPivot" type="Marker2D" parent="."]
 
 [node name="Pistol" type="Sprite2D" parent="WeaponPivot"]
-position = Vector2(66, -4.76837e-07)
-scale = Vector2(0.373457, 0.373457)
+unique_name_in_owner = true
+position = Vector2(69, 0)
+scale = Vector2(0.373, 0.373)
 texture = ExtResource("1_7n7u2")
 
 [node name="Barrel" type="Marker2D" parent="WeaponPivot/Pistol"]
@@ -27,5 +29,10 @@ position = Vector2(62, -19)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Gunshot" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_u4k1i")
+volume_db = -11.556
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

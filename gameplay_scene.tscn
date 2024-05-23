@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://d274hivgs4bsi"]
+[gd_scene load_steps=4 format=3 uid="uid://d274hivgs4bsi"]
 
+[ext_resource type="Script" path="res://gameplay_scene.gd" id="1_fp2y5"]
 [ext_resource type="PackedScene" uid="uid://4x6g8x42gxwp" path="res://player.tscn" id="1_www40"]
 [ext_resource type="PackedScene" uid="uid://juebimp2kbf1" path="res://guns/pistol/pistol.tscn" id="2_5gqon"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_fp2y5")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = -93.0
 offset_top = -92.0
 offset_right = 2037.0
 offset_bottom = 1305.0
+color = Color(0.297325, 0.762403, 0.345652, 1)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_www40")]
 position = Vector2(561, 306)

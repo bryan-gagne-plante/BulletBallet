@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://4x6g8x42gxwp"]
+[gd_scene load_steps=18 format=3 uid="uid://4x6g8x42gxwp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_efsik"]
 [ext_resource type="Texture2D" uid="uid://bxtsjnudcxvlf" path="res://Assets/Prototype_Character/Prototype_Character.png" id="2_sac02"]
+[ext_resource type="Texture2D" uid="uid://7u15jvgdnnht" path="res://Assets/Extra/Shadow.png" id="3_1hrar"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qyb1n"]
 radius = 26.0
@@ -241,3 +242,10 @@ libraries = {
 "": SubResource("AnimationLibrary_fd8tw")
 }
 speed_scale = 0.65
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(-1, 25)
+scale = Vector2(4.25, 2.15625)
+texture = ExtResource("3_1hrar")

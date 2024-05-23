@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://chmtqjtv6ypm4"]
+[gd_scene load_steps=4 format=3 uid="uid://chmtqjtv6ypm4"]
 
 [ext_resource type="Script" path="res://guns/pistol/Bullet.gd" id="1_jbcd4"]
 [ext_resource type="Texture2D" uid="uid://dn1i06yef7xov" path="res://guns/pistol/bullet.png" id="2_44f1o"]
-[ext_resource type="AudioStream" uid="uid://bviufxc7kkcbi" path="res://guns/pistol/pistol_shot.mp3" id="3_2wxhb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_upfcj"]
 radius = 4.0
@@ -21,9 +20,5 @@ shape = SubResource("CircleShape2D_upfcj")
 position = Vector2(1, 0)
 scale = Vector2(0.373, 0.373)
 texture = ExtResource("2_44f1o")
-
-[node name="Gunshot" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("3_2wxhb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

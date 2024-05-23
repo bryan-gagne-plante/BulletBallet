@@ -2,9 +2,6 @@ extends Area2D
 
 var travelled_distance = 0;
 
-func _ready():
-	%Gunshot.play()
-
 func _physics_process(delta):
 	const SPEED = 1000 
 	const RANGE = 1200

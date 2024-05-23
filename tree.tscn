@@ -2,15 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://djjmf3x7isva2" path="res://Assets/Trees/16x32 trees.png" id="1_7p5os"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xhtgr"]
-radius = 43.0116
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bpu4r"]
+radius = 17.0
+height = 82.0
 
 [node name="StaticBody2D" type="StaticBody2D"]
 texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_xhtgr")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bpu4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

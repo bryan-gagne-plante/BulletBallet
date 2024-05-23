@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d274hivgs4bsi"]
+[gd_scene load_steps=5 format=3 uid="uid://d274hivgs4bsi"]
 
 [ext_resource type="Script" path="res://gameplay_scene.gd" id="1_fp2y5"]
 [ext_resource type="PackedScene" uid="uid://4x6g8x42gxwp" path="res://player.tscn" id="1_www40"]
 [ext_resource type="PackedScene" uid="uid://juebimp2kbf1" path="res://guns/pistol/pistol.tscn" id="2_5gqon"]
+
+[sub_resource type="Curve2D" id="Curve2D_rvdwt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -355, -263, 0, 0, 0, 0, 2272, -266, 0, 0, 0, 0, 2268, 1448, 0, 0, 0, 0, -358, 1437, 0, 0, 0, 0, -355, -263)
+}
+point_count = 5
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fp2y5")
@@ -21,3 +27,17 @@ color = Color(0.297325, 0.762403, 0.345652, 1)
 position = Vector2(561, 306)
 
 [node name="Pistol" parent="CharacterBody2D" instance=ExtResource("2_5gqon")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_rvdwt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-355, -263)
+rotation = -0.00114199
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

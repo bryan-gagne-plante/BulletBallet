@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SMOKE_EXPLOSION = preload("res://smoke_explosion/smoke_explosion.tscn")
 
 @export var health = 3
-@onready var player = get_node("/root/Game/CharacterBody2D")
+@onready var player = get_node("/root/Game/Player")
 
 
 func _ready():

@@ -14,7 +14,7 @@ var player
 var generated_grids = []
 
 func _ready():
-	player = get_node("CharacterBody2D")
+	player = get_node("Player")
 	generate_grid(Vector2(0, 0))
 
 func _process(_delta):
@@ -68,3 +68,7 @@ func spawn_mob():
 func _on_timer_timeout():
 	spawn_mob()
 
+func _on_player_health_depleted():
+	%GameOver.visible = true
+	get_tree().paused = true
+	%GameOver/ColorRect/GameOverSound.play()

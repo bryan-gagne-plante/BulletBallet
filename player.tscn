@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://4x6g8x42gxwp"]
+[gd_scene load_steps=21 format=3 uid="uid://4x6g8x42gxwp"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_efsik"]
 [ext_resource type="Texture2D" uid="uid://bxtsjnudcxvlf" path="res://Assets/Prototype_Character/Prototype_Character.png" id="2_sac02"]
@@ -225,6 +225,29 @@ _data = {
 radius = 28.0
 height = 64.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8k37"]
+bg_color = Color(0.0666667, 0.0745098, 0.0823529, 0.729412)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c50xx"]
+bg_color = Color(0.766352, 0.133816, 0.0643414, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.693672, 0.118435, 0.0442085, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_efsik")
 
@@ -235,7 +258,7 @@ scale = Vector2(5.72461, 5.6875)
 texture = ExtResource("2_sac02")
 hframes = 4
 vframes = 12
-frame = 8
+frame = 44
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 26)
@@ -263,3 +286,14 @@ collision_mask = 2
 position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_i8wft")
 debug_color = Color(0.762714, 0, 0.142262, 0.42)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -70.0
+offset_top = -57.0
+offset_right = 71.0
+offset_bottom = -50.0
+theme_override_styles/background = SubResource("StyleBoxFlat_m8k37")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c50xx")
+value = 100.0
+show_percentage = false

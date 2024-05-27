@@ -23,6 +23,7 @@ func _physics_process(delta):
 	var overlapping_mobs = %HitBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
+		%HealthBar.value = health
 		if health <= 0.0:
 			health_depleted.emit()
 	
@@ -50,7 +51,5 @@ func play_idle_animation(direction):
 		$AnimationPlayer.play("front_idle")
 	else:
 		$AnimationPlayer.play("right_idle") # Sprite flipped in animate_character
-	
-func play_hurt():
-	%AnimationPlayer.play("hit_up")
-	%AnimationPlayer.queue("walk_down")
+		
+		

@@ -1,14 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://d274hivgs4bsi"]
+[gd_scene load_steps=8 format=3 uid="uid://d274hivgs4bsi"]
 
 [ext_resource type="Script" path="res://gameplay_scene.gd" id="1_fp2y5"]
 [ext_resource type="PackedScene" uid="uid://4x6g8x42gxwp" path="res://player.tscn" id="1_www40"]
 [ext_resource type="PackedScene" uid="uid://juebimp2kbf1" path="res://guns/pistol/pistol.tscn" id="2_5gqon"]
+[ext_resource type="AudioStream" uid="uid://cum8o6xtyplkv" path="res://sound/GTA 5 Death Sound Effect.mp3" id="4_xi1gg"]
 
 [sub_resource type="Curve2D" id="Curve2D_rvdwt"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -355, -263, 0, 0, 0, 0, 2272, -266, 0, 0, 0, 0, 2268, 1448, 0, 0, 0, 0, -358, 1437, 0, 0, 0, 0, -355, -263)
 }
 point_count = 5
+
+[sub_resource type="SystemFont" id="SystemFont_b7nnf"]
+font_weight = 500
+
+[sub_resource type="LabelSettings" id="LabelSettings_lfhlu"]
+line_spacing = 5.0
+font = SubResource("SystemFont_b7nnf")
+font_size = 121
+font_color = Color(0.816525, 0.0891931, 0.18204, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -24,17 +37,17 @@ offset_right = 2037.0
 offset_bottom = 1305.0
 color = Color(0.297325, 0.762403, 0.345652, 1)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_www40")]
+[node name="Player" parent="." instance=ExtResource("1_www40")]
 position = Vector2(561, 306)
 
-[node name="Pistol" parent="CharacterBody2D" instance=ExtResource("2_5gqon")]
+[node name="Pistol" parent="Player" instance=ExtResource("2_5gqon")]
 
-[node name="Path2D" type="Path2D" parent="CharacterBody2D"]
+[node name="Path2D" type="Path2D" parent="Player"]
 position = Vector2(-513.147, -289.498)
 scale = Vector2(0.550758, 0.550758)
 curve = SubResource("Curve2D_rvdwt")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="CharacterBody2D/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 unique_name_in_owner = true
 position = Vector2(-355, -263)
 rotation = -0.00114199
@@ -43,4 +56,43 @@ rotation = -0.00114199
 wait_time = 0.5
 autostart = true
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.843137)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = -83.0
+offset_right = 259.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.75339, 2.38247e-06, 5.77569e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 61
+text = "WASTED"
+label_settings = SubResource("LabelSettings_lfhlu")
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="GameOver/ColorRect"]
+unique_name_in_owner = true
+stream = ExtResource("4_xi1gg")
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

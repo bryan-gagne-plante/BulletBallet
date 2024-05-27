@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 400  # pixels/sec
+@export var health = 100.0 # health bar value
+const DAMAGE_RATE = 5.0 # health dmg/sec
 var last_direction = Vector2.ZERO
 
 func _ready():
@@ -15,6 +17,7 @@ func _physics_process(delta):
 
 	animate_character(last_direction)
 	move_and_slide()
+	
 	
 func animate_character(direction):
 	if Input.is_action_pressed("move_left"):
@@ -40,3 +43,6 @@ func play_idle_animation(direction):
 	else:
 		$AnimationPlayer.play("right_idle") # Sprite flipped in animate_character
 	
+func play_hurt():
+	%AnimationPlayer.play("hit_up")
+	%AnimationPlayer.queue("walk_down")

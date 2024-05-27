@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal health_depleted
+signal hyper_survival_mode
 
 @export var speed = 400  # pixels/sec
 @export var health = 100.0 # health bar value
@@ -24,6 +25,8 @@ func _physics_process(delta):
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		%HealthBar.value = health
+		if health <= 10.0:
+			hyper_survival_mode.emit()
 		if health <= 0.0:
 			health_depleted.emit()
 	

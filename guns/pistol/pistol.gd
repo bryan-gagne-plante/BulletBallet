@@ -41,3 +41,7 @@ func rotate_weapon() :
 		%Pistol.scale = Vector2(SCALE, -SCALE)
 	else:
 		%Pistol.scale = Vector2(SCALE, SCALE)
+
+
+func _on_player_hyper_survival_mode():
+	shot_delay = 0.1

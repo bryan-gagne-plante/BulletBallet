@@ -95,4 +95,5 @@ unique_name_in_owner = true
 stream = ExtResource("4_xi1gg")
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="hyper_survival_mode" from="Player" to="Player/Pistol" method="_on_player_hyper_survival_mode"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

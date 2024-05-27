@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
+signal health_depleted
+
 @export var speed = 400  # pixels/sec
 @export var health = 100.0 # health bar value
-const DAMAGE_RATE = 5.0 # health dmg/sec
+const DAMAGE_RATE = 10.0 # health dmg/sec
 var last_direction = Vector2.ZERO
 
 func _ready():
@@ -17,6 +19,12 @@ func _physics_process(delta):
 
 	animate_character(last_direction)
 	move_and_slide()
+	
+	var overlapping_mobs = %HitBox.get_overlapping_bodies()
+	if overlapping_mobs.size() > 0:
+		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
+		if health <= 0.0:
+			health_depleted.emit()
 	
 	
 func animate_character(direction):

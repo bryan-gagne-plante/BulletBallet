@@ -17,7 +17,7 @@ func _ready():
 	player = get_node("CharacterBody2D")
 	generate_grid(Vector2(0, 0))
 
-func _process(delta):
+func _process(_delta):
 	if player:
 		var player_position = player.global_position
 		var current_grid = Vector2(floor(player_position.x / grid_width), floor(player_position.y / grid_height))

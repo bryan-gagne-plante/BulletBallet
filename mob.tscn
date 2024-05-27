@@ -7,6 +7,7 @@
 radius = 27.0
 
 [node name="Mob" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_7uxoh")
 
 [node name="Slime" parent="." instance=ExtResource("1_ko8rn")]
